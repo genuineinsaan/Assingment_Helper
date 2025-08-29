@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignments Helper</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f6f9; color: #222;
+           padding: 40px; max-width: 1200px; margin: auto;
+           transition: background 0.3s, color 0.3s; }
+    h1 { text-align: center; margin-bottom: 30px; }
+    body.dark { background: #121212; color: #f1f1f1; }
+    body.dark .card { background: #1e1e1e; box-shadow: 0 4px 10px rgba(0,0,0,0.6); }
+    body.dark .footer { color: #aaa; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .card { background: #fff; padding: 25px; border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s, background 0.3s; text-align:center;}
+    .card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.15); }
+
+    /* LAB NAME STYLE */
+    .lab-name {
+      font-size: 1.4em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+      color: #333;
+    }
+    body.dark .lab-name { color: #ddd; }
+
+    /* VIEW LINK */
+    .card a { 
+      text-decoration: none; 
+      color: #007BFF; 
+      font-weight: bold; 
+      font-size: 1.1em; 
+      display: inline-block;
+      margin-top: 5px;
+    }
+    .card a:hover { text-decoration: underline; }
+
+    .footer { text-align: center; opacity: 0.7; font-size: 0.9em; margin-top: 40px; }
+    .toggle-btn { position: fixed; top: 20px; right: 20px; background: #007BFF; color: white;
+                  border: none; padding: 10px 15px; border-radius: 20px; cursor: pointer;
+                  font-size: 0.9em; transition: background 0.3s; z-index: 1000; }
+    .toggle-btn:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+  <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+  <h1>📘 Assignments Download</h1>
+
+  <div class="grid">
+    <div class="card">
+      <span class="lab-name">Operating System</span>
+      <a href="os-lab.html">➡️ View</a>
+    </div>
+    <div class="card">
+      <span class="lab-name">Java</span>
+      <a href="oop-lab.html">➡️ View</a>
+    </div>
+    <div class="card">
+      <span class="lab-name">Machine Learning</span>
+      <a href="ml-lab.html">➡️ View</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    Made by <b>Shashank</b> | Concept by <b>Sujal</b> |
+    <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>
+  </div>
+
+  <script>
+    if (localStorage.getItem("darkMode") === "enabled") {
+      document.body.classList.add("dark");
+      document.querySelector(".toggle-btn").innerText = "☀️ Light Mode";
+    }
+    function toggleDarkMode() {
+      let body = document.body;
+      let btn = document.querySelector(".toggle-btn");
+      body.classList.toggle("dark");
+      if (body.classList.contains("dark")) {
+        localStorage.setItem("darkMode", "enabled");
+        btn.innerText = "☀️ Light Mode";
+      } else {
+        localStorage.setItem("darkMode", "disabled");
+        btn.innerText = "🌙 Dark Mode";
+      }
+    }
+  </script>
+</body>
+</html>
